@@ -36,7 +36,7 @@ export default function Navbar() {
             >
               {open ? <HiX /> : <HiMenu />}
             </button>
-            <div className="hidden md:block">{navContent}</div>
+            <div className="hidden md:flex items-center">{navContent}</div>
           </div>
         </div>
         <div

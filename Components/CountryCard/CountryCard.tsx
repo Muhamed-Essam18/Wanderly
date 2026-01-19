@@ -4,9 +4,12 @@ import { DollarSign } from "lucide-react";
 import { Country } from "../../Data/Data";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
+import CountryImg from "./CountryImg";
+
 interface CountryCardProps {
   country: Country;
-
+  styleState: String[];
+  vibeState: String[];
   index: number;
 }
 
@@ -16,7 +19,12 @@ const budgetDots = {
   high: 3,
 };
 
-export const CountryCard = ({ country, index }: CountryCardProps) => {
+export const CountryCard = ({
+  country,
+  styleState,
+  vibeState,
+  index,
+}: CountryCardProps) => {
   const [modal, setmodal] = useState<boolean>(false);
 
   return (
@@ -27,12 +35,8 @@ export const CountryCard = ({ country, index }: CountryCardProps) => {
         style={{ animationDelay: `${index * 80}ms` }}
       >
         <div className="relative h-50 overflow-hidden">
-          <img
-            src={country.heroImage}
-            alt={country.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface/100 via-surface/30 to-transparent" />
+          <CountryImg code={country.heroImage} alt={country.name}></CountryImg>
+          <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/30 to-transparent" />
 
           <div className="absolute top-3 left-3 text-3xl drop-shadow-lg">
             <img
@@ -41,7 +45,7 @@ export const CountryCard = ({ country, index }: CountryCardProps) => {
             />
           </div>
 
-          <div className="absolute top-3 right-3 budget-indicator bg-card/80 backdrop-blur-sm px-2 py-1 rounded-full flex flex-row bg-secondary">
+          <div className="absolute top-3 right-3 budget-indicator backdrop-blur-sm px-2 py-1 rounded-full flex flex-row bg-secondary">
             {[...Array(3)].map((_, i) => (
               <DollarSign
                 key={i}
@@ -60,21 +64,34 @@ export const CountryCard = ({ country, index }: CountryCardProps) => {
             <h3 className=" text-2xl font-bold text-text-primary group-hover:text-primary transition-colors">
               {country.name}
             </h3>
-            <span className="text-sm text-muted-foreground whitespace-nowrap text-text-muted">
+            <span className="text-sm  whitespace-nowrap text-text-muted">
               ${country.weeklyBudget.min}-${country.weeklyBudget.max}/wk
             </span>
           </div>
 
           {/* Travel Style Tags */}
           <div className="flex flex-wrap gap-1.5 shadow-teal-200">
-            {country.travelStyles.map((style) => (
-              <span
-                key={style}
-                className="text-sm bg-text-special text-primary rounded-full px-3 py-1 border-border/50 border-primary"
-              >
-                {style}
-              </span>
-            ))}
+            {country.travelStyles
+              .filter((style) => styleState.includes(style))
+              .map((style) => (
+                <span
+                  key={style}
+                  className="text-sm bg-text-special text-primary rounded-full px-3 py-1  "
+                >
+                  {style}
+                </span>
+              ))}
+
+            {country.vibe
+              .filter((vibe) => vibeState.includes(vibe))
+              .map((vibes) => (
+                <span
+                  key={vibes}
+                  className="text-sm bg-text-special text-primary rounded-full px-3 py-1  "
+                >
+                  {vibes}
+                </span>
+              ))}
           </div>
 
           {/* Quick Stats */}

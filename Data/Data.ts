@@ -79,7 +79,7 @@ export const countries: Country[] = [
     description:
       "Where ancient traditions seamlessly blend with cutting-edge technology and natural wonders.",
     heroImage:
-      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170",
   },
   {
     id: "mexico",
@@ -96,7 +96,7 @@ export const countries: Country[] = [
     description:
       "Ancient ruins, vibrant culture, incredible cuisine, and pristine beaches await.",
     heroImage:
-      "https://images.unsplash.com/photo-1568402102990-bc541580b59f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1568402102990-bc541580b59f?q=80&w=687",
   },
   {
     id: "iceland",
@@ -162,7 +162,7 @@ export const countries: Country[] = [
     description:
       "A sensory feast of colors, spices, and ancient medinas where Africa meets Arabia.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1661962958462-9e52fda9954d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1661962958462-9e52fda9954d",
   },
   {
     id: "newzealand",
@@ -223,7 +223,7 @@ export const countries: Country[] = [
     description:
       "A resurgent gem with incredible biodiversity, passionate culture, and warm people.",
     heroImage:
-      "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?q=80&w=808&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?q=80&w=808",
   },
   {
     id: "indonesia",
@@ -245,7 +245,7 @@ export const countries: Country[] = [
     description:
       "A vast archipelago offering spiritual culture, tropical beaches, and dramatic volcanoes.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1677829177642-30def98b0963?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1677829177642-30def98b0963?q=80&w=1170",
   },
 
   {
@@ -268,7 +268,7 @@ export const countries: Country[] = [
     description:
       "Timeless art, iconic architecture, unforgettable cuisine, and deep cultural heritage.",
     heroImage:
-      "https://images.unsplash.com/photo-1514896856000-91cb6de818e0?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1514896856000-91cb6de818e0?q=80&w=1171",
   },
 
   {
@@ -286,7 +286,7 @@ export const countries: Country[] = [
     description:
       "Lively cities, rich traditions, sun-soaked beaches, and legendary nightlife.",
     heroImage:
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1583422409516-2895a77efded?q=80&w=1170",
   },
 
   {
@@ -304,7 +304,7 @@ export const countries: Country[] = [
     description:
       "A bridge between East and West with stunning history, food, and landscapes.",
     heroImage:
-      "https://images.unsplash.com/photo-1605581810011-c6d684e7ca22?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1605581810011-c6d684e7ca22?q=80&w=1138",
   },
 
   {
@@ -322,7 +322,7 @@ export const countries: Country[] = [
     description:
       "Wild safaris, dramatic coastlines, and vibrant urban culture.",
     heroImage:
-      "https://images.unsplash.com/photo-1594795311074-4f384eff0a49?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1594795311074-4f384eff0a49?q=80&w=1074",
   },
 
   {
@@ -374,8 +374,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 30,
     description:
       "The cradle of civilization with legendary monuments and timeless history.",
-    heroImage:
-      "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    heroImage: "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80",
   },
 
   {
@@ -393,7 +392,7 @@ export const countries: Country[] = [
     description:
       "High-energy culture, stunning beaches, rainforests, and festivals.",
     heroImage:
-      "https://images.unsplash.com/photo-1593995863951-57c27e518295?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1593995863951-57c27e518295?q=80&w=735",
   },
 
   {
@@ -411,7 +410,7 @@ export const countries: Country[] = [
     description:
       "A spiritual and adventurous haven in the heart of the Himalayas.",
     heroImage:
-      "https://images.unsplash.com/photo-1611516491426-03025e6043c8?q=80&w=1333&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1611516491426-03025e6043c8?q=80&w=1333",
   },
   {
     id: "canada",
@@ -446,7 +445,7 @@ export const countries: Country[] = [
     description:
       "European-style cities, world-class wine, and dramatic landscapes.",
     heroImage:
-      "https://images.unsplash.com/photo-1599094792743-7df3e8870800?q=80&w=1158&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1599094792743-7df3e8870800?q=80&w=1158",
   },
 
   {
@@ -463,7 +462,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 130,
     description: "Iconic beaches, laid-back lifestyle, and unique wildlife.",
     heroImage:
-      "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=1530",
   },
 
   {
@@ -480,7 +479,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 45,
     description: "Elegant architecture, thermal baths, and rich history.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1680721310331-7c5bea03392d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1680721310331-7c5bea03392d?q=80&w=1170",
   },
 
   {
@@ -498,7 +497,7 @@ export const countries: Country[] = [
     description:
       "Fairytale cities, medieval architecture, and rich beer culture.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1721675134861-a495c57ca4ef?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1721675134861-a495c57ca4ef?q=80&w=1332",
   },
 
   {
@@ -516,7 +515,7 @@ export const countries: Country[] = [
     description:
       "Classical music heritage, alpine beauty, and imperial cities.",
     heroImage:
-      "https://images.unsplash.com/photo-1606944331341-72bf6523ff5e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1606944331341-72bf6523ff5e?q=80&w=1332",
   },
 
   {
@@ -533,7 +532,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 45,
     description: "Deep history, charming old towns, and hearty cuisine.",
     heroImage:
-      "https://images.unsplash.com/photo-1563177978-4c5ffc081b2a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1563177978-4c5ffc081b2a?q=80&w=1074",
   },
 
   {
@@ -550,7 +549,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 40,
     description: "Medieval castles, wild mountains, and folklore legends.",
     heroImage:
-      "https://images.unsplash.com/photo-1534371020656-6b85825f2b1a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1534371020656-6b85825f2b1a?q=80&w=1170",
   },
 
   {
@@ -567,7 +566,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 120,
     description: "Arctic beauty, pristine lakes, and peaceful Nordic living.",
     heroImage:
-      "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?q=80&w=1170",
   },
 
   {
@@ -584,7 +583,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 140,
     description: "Dramatic fjords, untouched nature, and Arctic wonders.",
     heroImage:
-      "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1332",
   },
 
   {
@@ -618,7 +617,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 65,
     description: "From deserts to glaciers, Chile offers extreme landscapes.",
     heroImage:
-      "https://images.unsplash.com/photo-1490782300182-697b80ad4293?q=80&w=1227&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1490782300182-697b80ad4293?q=80&w=1227",
   },
 
   {
@@ -635,7 +634,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 30,
     description: "Surreal salt flats and indigenous heritage in the Andes.",
     heroImage:
-      "https://images.unsplash.com/photo-1544142447-e43d0fe04bf2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1544142447-e43d0fe04bf2?q=80&w=1170",
   },
 
   {
@@ -686,7 +685,7 @@ export const countries: Country[] = [
     description:
       "A blend of modern cities, deep history, and fairytale castles.",
     heroImage:
-      "https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?q=80&w=1121",
   },
 
   {
@@ -703,7 +702,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 95,
     description: "Canal-lined cities, cycling culture, and artistic heritage.",
     heroImage:
-      "https://images.unsplash.com/photo-1595698251407-8e7e3030a715?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1595698251407-8e7e3030a715?q=80&w=1170",
   },
 
   {
@@ -720,7 +719,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 90,
     description: "Medieval towns, world-famous chocolate, and rich history.",
     heroImage:
-      "https://images.unsplash.com/photo-1547057951-61fcf322bb1e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1547057951-61fcf322bb1e?q=80&w=1074",
   },
 
   {
@@ -737,7 +736,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 150,
     description: "Alpine perfection, pristine lakes, and world-class scenery.",
     heroImage:
-      "https://images.unsplash.com/photo-1570161766218-f8488ebb8078?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1570161766218-f8488ebb8078?q=80&w=1170",
   },
 
   {
@@ -754,7 +753,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 90,
     description: "Green landscapes, warm pubs, and legendary folklore.",
     heroImage:
-      "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=1074",
   },
 
   {
@@ -771,7 +770,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 85,
     description: "Dramatic highlands, ancient castles, and Celtic heritage.",
     heroImage:
-      "https://images.unsplash.com/photo-1505832018823-50331d70d237?q=80&w=1208&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1505832018823-50331d70d237?q=80&w=1208",
   },
 
   {
@@ -788,7 +787,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 120,
     description: "Nordic design, cycling culture, and cozy city life.",
     heroImage:
-      "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?q=80&w=1170",
   },
 
   {
@@ -805,7 +804,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 30,
     description: "Island-hopping paradise with turquoise waters.",
     heroImage:
-      "https://images.unsplash.com/photo-1590077211339-724573dc4121?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1590077211339-724573dc4121?q=80&w=1074",
   },
 
   {
@@ -822,7 +821,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 28,
     description: "Cultural diversity, rainforests, and futuristic skylines.",
     heroImage:
-      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1164&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1164",
   },
 
   {
@@ -856,7 +855,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 75,
     description: "K-pop energy, ancient palaces, and dynamic street life.",
     heroImage:
-      "https://images.unsplash.com/photo-1523180003485-e6e7d62c938b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1523180003485-e6e7d62c938b?q=80&w=1170",
   },
 
   {
@@ -873,7 +872,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 55,
     description: "Night markets, mountains, and warm hospitality.",
     heroImage:
-      "https://images.unsplash.com/photo-1530324652194-d78318776d5c?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1530324652194-d78318776d5c?q=80&w=765",
   },
 
   {
@@ -890,7 +889,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 60,
     description: "Ancient civilization with futuristic megacities.",
     heroImage:
-      "https://images.unsplash.com/photo-1516545595035-b494dd0161e4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1516545595035-b494dd0161e4?q=80&w=1170",
   },
 
   {
@@ -908,7 +907,7 @@ export const countries: Country[] = [
     description:
       "Desert wonders, ancient trade routes, and rapid transformation.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1697730274057-19338e84db8e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1697730274057-19338e84db8e?q=80&w=1170",
   },
 
   {
@@ -942,7 +941,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 130,
     description: "Modern luxury with deep Arabian heritage.",
     heroImage:
-      "https://images.unsplash.com/photo-1700901742651-6b353164caf3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1700901742651-6b353164caf3?q=80&w=1170",
   },
 
   {
@@ -959,7 +958,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 60,
     description: "Authentic Arabian culture with dramatic landscapes.",
     heroImage:
-      "https://images.unsplash.com/photo-1599743777555-e362a2feab39?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1599743777555-e362a2feab39?q=80&w=688",
   },
 
   {
@@ -976,7 +975,7 @@ export const countries: Country[] = [
     avgAccommodationCost: 55,
     description: "Iconic safaris, wildlife, and dramatic savannas.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1664304370557-233bccc0ac85?q=80&w=1179&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1664304370557-233bccc0ac85?q=80&w=1179",
   },
 
   {
@@ -994,7 +993,7 @@ export const countries: Country[] = [
     description:
       "Safari heartland with pristine beaches and legendary wildlife.",
     heroImage:
-      "https://plus.unsplash.com/premium_photo-1664304476568-0266b152bf9c?q=80&w=1192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1664304476568-0266b152bf9c?q=80&w=1192",
   },
 ];
 

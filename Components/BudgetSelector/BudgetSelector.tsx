@@ -18,10 +18,17 @@ const BudgetSelector = () => {
       prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
     );
   };
+  const checkAllHandler = (
+    checked: boolean,
+    setState: React.Dispatch<React.SetStateAction<string[]>>,
+    options: string[]
+  ) => {
+    checked ? setState(options) : setState([]);
+  };
 
   return (
     <section className="flex flex-col items-center mt-15">
-      <div className="w-[90%] flex flex-col gap-10 justify-center items-center p-7 bg-surface rounded-2xl">
+      <div className="w-[90%] md:w-3/4 flex flex-col gap-10 justify-center items-center p-7 bg-surface rounded-2xl">
         <div className="w-full flex flex-row justify-between items-center ">
           <h4 className="text-xl font-bold text-text-primary ">
             <LuWallet className="text-primary text-xl inline mr-2 mb-1" />
@@ -31,7 +38,7 @@ const BudgetSelector = () => {
             ${cardState.Budget}
           </h3>
         </div>
-        <div className="w-full max-w-md space-y-4">
+        <div className="w-full  space-y-4">
           <div className="flex justify-between text-sm text-text-muted">
             <span>Budget</span>
           </div>
@@ -77,6 +84,25 @@ const BudgetSelector = () => {
                   {style}
                 </button>
               ))}
+              <div className="flex flex-row items-center justify-center gap-2 ml-2 md:ml-5">
+                <input
+                  type="checkbox"
+                  className="bg-surface text-secondary"
+                  onChange={(e) =>
+                    checkAllHandler(
+                      e.target.checked,
+                      cardState.setSelectedStyle,
+                      [...travelStyles]
+                    )
+                  }
+                  checked={
+                    cardState.SelectedStyle.length === travelStyles.length
+                  }
+                />
+                <span className="text-sm md:text-md text-text-primary">
+                  Check All
+                </span>
+              </div>
             </div>
             <div className="flex items-center gap-2 mt-10">
               <FaRegGrinStars className="text-primary text-lg" />
@@ -96,6 +122,22 @@ const BudgetSelector = () => {
                   {style}
                 </button>
               ))}
+              <div className="flex flex-row items-center justify-center gap-2 ml-2 md:ml-5">
+                <input
+                  type="checkbox"
+                  onChange={(e) =>
+                    checkAllHandler(
+                      e.target.checked,
+                      cardState.setSelectedVibe,
+                      [...vibeOptions]
+                    )
+                  }
+                  checked={cardState.SelectedVibe.length === vibeOptions.length}
+                />
+                <span className="text-sm md:text-md text-text-primary">
+                  Check All
+                </span>
+              </div>
             </div>
           </div>
         </div>
