@@ -7,7 +7,7 @@ const CountryImg = ({ code, alt }: { code: string; alt: string }) => {
   const [loading, setLoading] = useState(true); // Loading Handling
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex flex-col items-center justify-center">
       {loading && (
         <motion.div
           animate={{
@@ -18,7 +18,7 @@ const CountryImg = ({ code, alt }: { code: string; alt: string }) => {
               y: { repeat: Infinity, repeatType: "reverse", duration: 0.25 },
             },
           }}
-          className="rounded-full bg-white h-2 w-2 m-auto"
+          className="rounded-full bg-white h-2 w-2  z-100 m-auto absolute"
         ></motion.div>
       )}
 
