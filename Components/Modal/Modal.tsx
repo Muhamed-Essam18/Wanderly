@@ -1,5 +1,6 @@
 import { Country } from "@/Data/Data";
 import { Bed, Building, Landmark, MapPin, Utensils, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface CountryDetailsProps {
   country: Country;
@@ -8,12 +9,29 @@ interface CountryDetailsProps {
 
 const Modal = ({ country, onClose }: CountryDetailsProps) => {
   return (
-    <div
-      onClick={onClose}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "spring",
+
+        duration: 0.6,
+      }}
+      exit={{ opacity: 0, y: 40 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 "
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <motion.div
+        initial={{ opacity: 0, y: 50, backdropFilter: "blur(0px)" }}
+        animate={{ opacity: 1, y: 0, backdropFilter: "blur(4px)" }}
+        transition={{
+          type: "spring",
+          backdropFilter: { duration: 0.4, ease: "linear" },
+          duration: 0.6,
+        }}
+        exit={{ opacity: 0, y: 40 }}
+        className="absolute inset-0 bg-black/80 "
+      />
 
       {/* Modal */}
       <div
@@ -147,7 +165,7 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

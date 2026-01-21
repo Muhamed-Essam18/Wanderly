@@ -5,6 +5,8 @@ import { travelStyles, vibeOptions } from "@/Data/Data";
 import { BsCompass } from "react-icons/bs";
 import { FaRegGrinStars } from "react-icons/fa";
 import { Context } from "@/app/page";
+import { motion, stagger } from "motion/react";
+import { easeInOut } from "motion";
 
 const BudgetSelector = () => {
   const cardState = useContext(Context);
@@ -18,6 +20,7 @@ const BudgetSelector = () => {
       prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
     );
   };
+
   const checkAllHandler = (
     checked: boolean,
     setState: React.Dispatch<React.SetStateAction<string[]>>,
@@ -25,11 +28,40 @@ const BudgetSelector = () => {
   ) => {
     checked ? setState(options) : setState([]);
   };
-
+  {
+    /*Framer Motion */
+  }
+  const parent = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+    },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: easeInOut,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 100 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  };
   return (
     <section className="flex flex-col items-center mt-15">
-      <div className="w-[90%] md:w-3/4 flex flex-col gap-10 justify-center items-center p-7 bg-surface rounded-2xl">
-        <div className="w-full flex flex-row justify-between items-center ">
+      <motion.div
+        variants={parent}
+        initial="hidden"
+        animate="show"
+        className="w-[90%] md:w-3/4 flex flex-col gap-10 justify-center items-center p-7 bg-surface rounded-2xl"
+      >
+        <motion.div
+          variants={item}
+          className="w-full flex flex-row justify-between items-center "
+        >
           <h4 className="text-xl font-bold text-text-primary ">
             <LuWallet className="text-primary text-xl inline mr-2 mb-1" />
             Weekly Budget
@@ -37,8 +69,8 @@ const BudgetSelector = () => {
           <h3 className="text-lg text-primary font-bold">
             ${cardState.Budget}
           </h3>
-        </div>
-        <div className="w-full  space-y-4">
+        </motion.div>
+        <motion.div variants={item} className="w-full  space-y-4">
           <div className="flex justify-between text-sm text-text-muted">
             <span>Budget</span>
           </div>
@@ -140,8 +172,8 @@ const BudgetSelector = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

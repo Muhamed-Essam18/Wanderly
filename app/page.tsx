@@ -6,8 +6,18 @@ import BudgetSelector from "@/Components/BudgetSelector/BudgetSelector";
 import { CountryCard } from "@/Components/CountryCard/CountryCard";
 import SortBar from "@/Components/SortBar/SortBar";
 import { countries, Country } from "@/Data/Data";
+import { motion, LayoutGroup, AnimatePresence } from "motion/react";
 import { useState, createContext, useMemo, useEffect } from "react";
-
+const animation = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
 export const Context = createContext<any>(null);
 export default function Home() {
   //states
@@ -69,32 +79,45 @@ export default function Home() {
         }}
       >
         <BudgetSelector />
-        {onScreenCountries.length > 1 && (
+        {onScreenCountries.length && (
           <Context.Provider value={{ sortType, setSortType }}>
-            <SortBar />
+            <SortBar resultsNo={visibleCountries.length} />
           </Context.Provider>
         )}
-        <div className=" flex flex-col md:grid md:grid-cols-3 mt-10">
-          {onScreenCountries.map((country, i) => (
-            <CountryCard
-              key={i}
-              country={country}
-              styleState={SelectedStyle}
-              vibeState={SelectedVibe}
-              index={i}
-            />
-          ))}
-        </div>
+        <AnimatePresence>
+          <LayoutGroup>
+            <motion.div className=" flex flex-col md:grid md:grid-cols-3 mt-10">
+              {onScreenCountries.map((country, i) => (
+                <CountryCard
+                  key={country.id}
+                  country={country}
+                  styleState={SelectedStyle}
+                  vibeState={SelectedVibe}
+                  index={i}
+                />
+              ))}
+            </motion.div>
+          </LayoutGroup>
+        </AnimatePresence>
         {onScreenCountries.length >= 5 && !showMore && (
-          <div className="flex flex-col justify-center items-center">
-            <button
+          <motion.div
+            variants={animation}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col justify-center items-center"
+          >
+            <motion.button
+              layout
+              variants={animation}
+              initial="hidden"
+              animate="show"
               className="flex items-center gap-2"
               onClick={() => setShowMOre(true)}
             >
               <span className="text-text-primary">Show All Resaults</span>
               <FaArrowCircleDown className="text-text-primary" />
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         )}
       </Context.Provider>
     </>

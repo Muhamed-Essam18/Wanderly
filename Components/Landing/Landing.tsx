@@ -1,8 +1,15 @@
 import { GiWorld } from "react-icons/gi";
+import { AnimatePresence, motion, scale } from "motion/react";
 
 const Landing = () => {
   return (
-    <section className=" pt-30 flex flex-col items-center gap-5 space-y-3 ">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      layout
+      className=" pt-30 flex flex-col items-center gap-5 space-y-3 "
+    >
       <div className="w-[70%] md:w-1/3 h-11 md:h-15 rounded-full  bg-text-special border border-primary/30  flex flex-row justify-center items-center gap-2 ">
         <GiWorld className="text-primary text-xl inline" />
         <h1 className="text-primary md:text-xl text-center">
@@ -21,7 +28,7 @@ const Landing = () => {
           your next adventure.
         </p>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

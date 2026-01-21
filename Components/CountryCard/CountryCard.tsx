@@ -5,7 +5,7 @@ import { Country } from "../../Data/Data";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
 import CountryImg from "./CountryImg";
-
+import { AnimatePresence, motion } from "motion/react";
 interface CountryCardProps {
   country: Country;
   styleState: String[];
@@ -29,10 +29,11 @@ export const CountryCard = ({
 
   return (
     <>
-      <article
+      <motion.article
+        layout
+        transition={{ type: "spring", stiffness: 120, damping: 20 }}
         onClick={() => setmodal(true)}
-        className="cursor-pointer group overflow-hidden animate-fade-up w-[90%] text-text-primary m-auto bg-surface my-5 rounded-2xl  border border-text-muted/15"
-        style={{ animationDelay: `${index * 80}ms` }}
+        className="cursor-pointer group overflow-hidden  w-[90%] text-text-primary m-auto bg-surface my-5 rounded-2xl  border border-text-muted/15"
       >
         <div className="relative h-50 overflow-hidden">
           <CountryImg code={country.heroImage} alt={country.name}></CountryImg>
@@ -102,8 +103,10 @@ export const CountryCard = ({
             <span>{country.landmarks.length} landmarks</span>
           </div>
         </div>
-      </article>
-      {modal && <Modal country={country} onClose={() => setmodal(false)} />}
+      </motion.article>
+      <AnimatePresence>
+        {modal && <Modal country={country} onClose={() => setmodal(false)} />}
+      </AnimatePresence>
     </>
   );
 };

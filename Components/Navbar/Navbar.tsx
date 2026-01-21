@@ -1,8 +1,14 @@
 "use client";
 import { useState } from "react";
-import { TbWorld } from "react-icons/tb";
+import Image from "next/image";
 import { HiMenu, HiX } from "react-icons/hi";
 import Backdrop from "../Backdrop/Backdrop";
+import { motion, easeInOut } from "motion/react";
+import Logo from "../../public/imgs/logo.png";
+const nav = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navContent = (
@@ -21,13 +27,31 @@ export default function Navbar() {
 
   return (
     <>
-      {open && <Backdrop clicked={() => setOpen(!open)} />}
-      <nav className="fixed  top-0 z-50 w-full bg-surface border-b border-white/10 block ">
+      {open && (
+        <motion.div>
+          <Backdrop clicked={() => setOpen(!open)} />
+        </motion.div>
+      )}
+
+      <motion.nav
+        variants={nav}
+        initial="hidden"
+        animate="show"
+        transition={{
+          duration: 0.6,
+          ease: "easeOut",
+        }}
+        className="fixed  top-0 z-50 w-full bg-surface border-b border-white/10 block "
+      >
         <div className={`flex flex-col justify-center h-20`}>
           <div className="w-[90%] h-16 flex flex-row justify-between m-auto ">
             <div className="flex flex-row justify-between gap-2 items-center">
-              <TbWorld className="text-primary text-3xl" />
-              <h1 className="text-text-primary text-2xl font-bold">Wanderly</h1>
+              <Image
+                src="/imgs/logo1.png"
+                alt="logo"
+                width={120}
+                height={120}
+              />
             </div>
 
             <button
@@ -50,7 +74,7 @@ export default function Navbar() {
         >
           {navContent}
         </div>
-      </nav>
+      </motion.nav>
     </>
   );
 }
