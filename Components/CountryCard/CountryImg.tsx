@@ -18,7 +18,7 @@ const CountryImg = ({ code, alt }: { code: string; alt: string }) => {
               y: { repeat: Infinity, repeatType: "reverse", duration: 0.25 },
             },
           }}
-          className="rounded-full bg-white h-2 w-2"
+          className="rounded-full bg-white h-2 w-2 m-auto"
         ></motion.div>
       )}
 
