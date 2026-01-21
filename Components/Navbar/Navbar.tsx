@@ -1,28 +1,45 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { HiMenu, HiX } from "react-icons/hi";
 import Backdrop from "../Backdrop/Backdrop";
-import { motion, easeInOut } from "motion/react";
-import Logo from "../../public/imgs/logo.png";
-const nav = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+import { motion, useScroll, useTransform } from "motion/react";
+
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const { scrollY } = useScroll();
+
+  const nav = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+  const bg = useTransform(
+    scrollY,
+    [0, 200],
+    ["rgba(0,0,0,0)", "rgba(12, 17, 31, 1)"]
+  );
   const navContent = (
-    <ul className="flex flex-col md:flex-row font-medium md:text-text-primary gap-6 px-6 py-10 text-text-muted w-full md:w-auto md:text-xl ">
+    <motion.ul
+      variants={nav}
+      initial="hidden"
+      animate="show"
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+      style={{ backgroundColor: bg }}
+      className="flex flex-col md:flex-row font-medium md:text-text-primary gap-6 px-6 py-10 text-text-muted w-full md:w-auto md:text-xl text-center "
+    >
       <li className="hover:text-primary cursor-pointer transition text-xl">
-        Home
+        <a href="">About</a>
       </li>
       <li className="hover:text-primary cursor-pointer transition text-xl">
-        About
+        <a href="">Upcoming Features </a>
       </li>
       <li className="hover:text-primary cursor-pointer transition text-xl">
-        My Wander
+        <a href="">Meet The Developer</a>
       </li>
-    </ul>
+    </motion.ul>
   );
 
   return (
@@ -41,7 +58,8 @@ export default function Navbar() {
           duration: 0.6,
           ease: "easeOut",
         }}
-        className="fixed  top-0 z-50 w-full bg-surface border-b border-white/10 block "
+        style={{ backgroundColor: bg }}
+        className="fixed  top-0 z-50 w-full "
       >
         <div className={`flex flex-col justify-center h-20`}>
           <div className="w-[90%] h-16 flex flex-row justify-between m-auto ">
@@ -63,7 +81,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center">{navContent}</div>
           </div>
         </div>
-        <div
+        <motion.div
           className={`md:hidden w-full bg-surface border-t border-white/10 duration-300 ease-out transition-all origin-top
             ${
               open
@@ -73,7 +91,7 @@ export default function Navbar() {
   `}
         >
           {navContent}
-        </div>
+        </motion.div>
       </motion.nav>
     </>
   );

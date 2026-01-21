@@ -31,7 +31,12 @@ export const CountryCard = ({
     <>
       <motion.article
         layout
-        transition={{ type: "spring", stiffness: 120, damping: 20 }}
+        transition={{
+          delay: index * 0.01,
+          type: "spring",
+          stiffness: 120,
+          damping: 20,
+        }}
         onClick={() => setmodal(true)}
         className="cursor-pointer group overflow-hidden  w-[90%] text-text-primary m-auto bg-surface my-5 rounded-2xl  border border-text-muted/15"
       >

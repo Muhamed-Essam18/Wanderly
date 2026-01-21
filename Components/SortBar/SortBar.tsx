@@ -27,12 +27,12 @@ const SortBar = ({ resultsNo }: any) => {
       <div className="w-full text-sm font-bold md:text-lg p-6 text-text-primary flex items-center gap-2 flex-row">
         <CiSearch className="text-2xl" /> {resultsNo} Destinations Found
       </div>
-      <div className="flex flex-col w-full justify-center items-center">
+      <div className="flex flex-col md:flex-row w-full justify-center items-center">
         <span className="text-sm md:text-lg mr-2 text-primary font-bold">
           Sort by
         </span>
         <Select onValueChange={sort.setSortType} value={sort.sortType}>
-          <SelectTrigger className="w-2/3 text-xs text-primary bg-secondary border border-background shadow-2xl shadow-balck ">
+          <SelectTrigger className="w-2/3 text-xs md:text-sm text-primary bg-secondary border border-background shadow-2xl shadow-balck ">
             <SelectValue className="text-white" placeholder="Sort By" />
           </SelectTrigger>
           <SelectContent className="bg-surface text-primary border border-secondary">

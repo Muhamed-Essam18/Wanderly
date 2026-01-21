@@ -6,7 +6,7 @@ import BudgetSelector from "@/Components/BudgetSelector/BudgetSelector";
 import { CountryCard } from "@/Components/CountryCard/CountryCard";
 import SortBar from "@/Components/SortBar/SortBar";
 import { countries, Country } from "@/Data/Data";
-import { motion, LayoutGroup, AnimatePresence } from "motion/react";
+import { motion, LayoutGroup, AnimatePresence, easeInOut } from "motion/react";
 import { useState, createContext, useMemo, useEffect } from "react";
 const animation = {
   hidden: { opacity: 0, y: 20 },
@@ -85,8 +85,18 @@ export default function Home() {
           </Context.Provider>
         )}
         <AnimatePresence>
-          <LayoutGroup>
-            <motion.div className=" flex flex-col md:grid md:grid-cols-3 mt-10">
+          <motion.div
+            key={onScreenCountries.length}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              ease: easeInOut,
+              duration: 0.6,
+            }}
+            className=" flex flex-col md:grid md:grid-cols-3 mt-10"
+          >
+            <LayoutGroup>
               {onScreenCountries.map((country, i) => (
                 <CountryCard
                   key={country.id}
@@ -96,8 +106,8 @@ export default function Home() {
                   index={i}
                 />
               ))}
-            </motion.div>
-          </LayoutGroup>
+            </LayoutGroup>
+          </motion.div>
         </AnimatePresence>
         {onScreenCountries.length >= 5 && !showMore && (
           <motion.div
@@ -111,10 +121,13 @@ export default function Home() {
               variants={animation}
               initial="hidden"
               animate="show"
-              className="flex items-center gap-2"
+              whileHover={{ scale: 1.1 }}
+              className="flex items-center gap-2 bg-surface rounded-2xl p-5 shadow-2xl shadow-black my-10 cursor-pointer hover:bg-primary transition-colors"
               onClick={() => setShowMOre(true)}
             >
-              <span className="text-text-primary">Show All Resaults</span>
+              <span className="text-text-primary font-bold hover:tex-primary">
+                Show All Resaults
+              </span>
               <FaArrowCircleDown className="text-text-primary" />
             </motion.button>
           </motion.div>

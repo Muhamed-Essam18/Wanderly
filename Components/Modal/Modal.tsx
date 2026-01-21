@@ -18,6 +18,7 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
         duration: 0.6,
       }}
       exit={{ opacity: 0, y: 40 }}
+      onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 "
     >
       {/* Backdrop */}
