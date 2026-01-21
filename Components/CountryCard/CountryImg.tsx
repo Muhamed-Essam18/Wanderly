@@ -1,5 +1,6 @@
 "use client";
-import Image from "next/image";
+
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const CountryImg = ({ code, alt }: { code: string; alt: string }) => {
@@ -8,7 +9,17 @@ const CountryImg = ({ code, alt }: { code: string; alt: string }) => {
   return (
     <div className="relative flex items-center justify-center">
       {loading && (
-        <div className="absolute w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin bg-red-600"></div>
+        <motion.div
+          animate={{
+            x: [-20, 20],
+            y: [0, -30],
+            transition: {
+              x: { repeat: Infinity, repeatType: "reverse", duration: 0.5 },
+              y: { repeat: Infinity, repeatType: "reverse", duration: 0.25 },
+            },
+          }}
+          className="rounded-full bg-white h-2 w-2"
+        ></motion.div>
       )}
 
       <img

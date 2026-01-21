@@ -1,5 +1,6 @@
 import { GiWorld } from "react-icons/gi";
 import { motion } from "motion/react";
+import { Repeat } from "lucide-react";
 
 const Landing = () => {
   return (
