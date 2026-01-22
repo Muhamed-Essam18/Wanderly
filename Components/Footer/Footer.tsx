@@ -13,19 +13,21 @@ const Footer = () => {
           <Image src="/imgs/logo1.png" alt="logo" width={120} height={120} />
         </div>
 
-        <ul className="flex flex-col md:flex-row gap-4 text-sm text-center">
+        <ul className="flex flex-col md:flex-row gap-4 text-sm  text-center">
           <li>
-            <a href="#" className="hover:text-amber-400 transition-colors">
+            <a href="#" className="hover:text-primary transition-colors">
               About
             </a>
           </li>
+          <li>|</li>
           <li>
-            <a href="" className="hover:text-amber-400 transition-colors">
+            <a href="" className="hover:text-primary transition-colors">
               Upcoming Features
             </a>
           </li>
+          <li>|</li>
           <li>
-            <a href="" className="hover:text-amber-400 transition-colors">
+            <a href="" className="hover:text-primary transition-colors">
               Meet The Developer
             </a>
           </li>
@@ -36,28 +38,28 @@ const Footer = () => {
           <a
             target="blank"
             href="https://www.linkedin.com/in/muhamed-essam-9a8983247/"
-            className="hover:text-amber-400 transition-colors"
+            className="hover:text-primary transition-colors"
           >
             <FaLinkedin className="text-xl" />
           </a>
           <a
             target="blank"
             href="https://www.instagram.com/muhamed.essam1911/?utm_source=ig_web_button_share_sheet"
-            className="hover:text-amber-400 transition-colors"
+            className="hover:text-primary transition-colors"
           >
             <FaInstagram className="text-xl" />
           </a>
           <a
             target="blank"
             href="https://www.facebook.com/muhamed.essam.50/"
-            className="hover:text-amber-400 transition-colors"
+            className="hover:text-primary transition-colors"
           >
             <FaFacebook className="text-xl" />
           </a>
           <a
             target="blank"
-            href="https://wa.me/201272570775"
-            className="hover:text-amber-400 transition-colors"
+            href="https://wa.me/201272570775www.linkedin.com/in/muhamed-essam-9a8983247"
+            className="hover:text-primary transition-colors"
           >
             <FaWhatsapp className="text-xl" />
           </a>

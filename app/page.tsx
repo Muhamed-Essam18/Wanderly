@@ -120,8 +120,8 @@ export default function Home() {
               variants={animation}
               initial="hidden"
               animate="show"
-              whileHover={{ scale: 1.1 }}
-              className="flex items-center gap-2 bg-surface rounded-2xl p-5 shadow-2xl shadow-black my-10 cursor-pointer hover:bg-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 bg-surface rounded-2xl p-3 shadow-2xl shadow-black my-10 cursor-pointer hover:bg-primary transition-colors"
               onClick={() => setShowMOre(true)}
             >
               <span className="text-text-primary font-bold hover:tex-primary">

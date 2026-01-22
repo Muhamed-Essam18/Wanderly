@@ -35,9 +35,8 @@ export const CountryCard = ({
         animate={{ x: 0, y: 0 }}
         exit={{ opacity: 0, scale: 0.5 }}
         transition={{
-          delay: index * 0.1,
           type: "spring",
-          stiffness: 120,
+          stiffness: 160,
           damping: 20,
         }}
         onClick={() => setmodal(true)}
@@ -61,7 +60,7 @@ export const CountryCard = ({
                 className={`w-4 h-4 ${
                   i < budgetDots[country.budgetLevel]
                     ? "text-primary"
-                    : "text-muted-foreground/30"
+                    : "text-text-muted/30"
                 }`}
               />
             ))}

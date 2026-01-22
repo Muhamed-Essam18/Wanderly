@@ -10,9 +10,9 @@ const Landing = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className=" pt-30 flex flex-col items-center gap-5 space-y-3 "
     >
-      <div className="w-[70%] md:w-1/3 h-11 md:h-15 rounded-full  bg-text-special border border-primary/30  flex flex-row justify-center items-center gap-2 ">
+      <div className="w-[60%] md:w-[20%] h-10 md:h-10 rounded-full  bg-text-special border border-primary/30  flex flex-row justify-center items-center gap-2 ">
         <GiWorld className="text-primary text-xl inline" />
-        <h1 className="text-primary md:text-xl text-center">
+        <h1 className="text-primary md:text-md text-center">
           Discover 50+ destinations
         </h1>
       </div>
@@ -21,8 +21,7 @@ const Landing = () => {
         <h1 className="text-4xl md:text-6xl text-text-primary text-center font-extrabold">
           Where will you
           <p className="text-5xl md:text-7xl text-primary inline font-bold">
-            {" "}
-            wander{" "}
+            wander
           </p>
           next?
         </h1>
