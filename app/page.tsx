@@ -76,7 +76,7 @@ export default function Home() {
         }}
       >
         <BudgetSelector />
-        {onScreenCountries.length && (
+        {onScreenCountries.length >= 1 && (
           <Context.Provider value={{ sortType, setSortType }}>
             <SortBar resultsNo={visibleCountries.length} />
           </Context.Provider>
