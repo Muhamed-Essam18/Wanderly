@@ -20,7 +20,6 @@ const animation = {
 };
 export const Context = createContext<any>(null);
 export default function Home() {
-  //states
   const [Budget, setBudget] = useState(500);
   const [SelectedStyle, setSelectedStyle] = useState<string[]>([]);
   const [SelectedVibe, setSelectedVibe] = useState<string[]>([]);
@@ -36,7 +35,6 @@ export default function Home() {
           country.vibe.some((v) => SelectedVibe.includes(v)))
     );
 
-    // SORT
     return [...filtered].sort((a, b) => {
       switch (sortType) {
         case "cheap":
@@ -49,7 +47,6 @@ export default function Home() {
           return b.name.localeCompare(a.name);
       }
 
-      // match
       const score = (c: Country) =>
         c.travelStyles.filter((s) => SelectedStyle.includes(s)).length +
         c.vibe.filter((v) => SelectedVibe.includes(v)).length;
@@ -84,19 +81,20 @@ export default function Home() {
             <SortBar resultsNo={visibleCountries.length} />
           </Context.Provider>
         )}
-        <AnimatePresence>
-          <motion.div
-            key={onScreenCountries.length}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: "spring",
-              ease: easeInOut,
-              duration: 0.6,
-            }}
-            className=" flex flex-col md:grid md:grid-cols-3 mt-10"
-          >
-            <LayoutGroup>
+
+        <motion.div
+          key={onScreenCountries.length}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            ease: easeInOut,
+            duration: 0.6,
+          }}
+          className=" flex flex-col md:grid md:grid-cols-3 mt-10"
+        >
+          <LayoutGroup>
+            <AnimatePresence initial={false} mode="popLayout">
               {onScreenCountries.map((country, i) => (
                 <CountryCard
                   key={country.id}
@@ -106,9 +104,10 @@ export default function Home() {
                   index={i}
                 />
               ))}
-            </LayoutGroup>
-          </motion.div>
-        </AnimatePresence>
+            </AnimatePresence>
+          </LayoutGroup>
+        </motion.div>
+
         {onScreenCountries.length >= 5 && !showMore && (
           <motion.div
             variants={animation}

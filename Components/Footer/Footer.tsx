@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="flex gap-4 mt-8 md:mt-0">
           <a
             target="blank"
-            href="www.linkedin.com/in/muhamed-essam-9a8983247"
+            href="https://www.linkedin.com/in/muhamed-essam-9a8983247/"
             className="hover:text-amber-400 transition-colors"
           >
             <FaLinkedin className="text-xl" />
@@ -56,7 +56,7 @@ const Footer = () => {
           </a>
           <a
             target="blank"
-            href="https://wa.me/201272570775www.linkedin.com/in/muhamed-essam-9a8983247"
+            href="https://wa.me/201272570775"
             className="hover:text-amber-400 transition-colors"
           >
             <FaWhatsapp className="text-xl" />

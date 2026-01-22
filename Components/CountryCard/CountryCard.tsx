@@ -31,8 +31,11 @@ export const CountryCard = ({
     <>
       <motion.article
         layout
+        initial={{ x: -50, y: 50 }}
+        animate={{ x: 0, y: 0 }}
+        exit={{ opacity: 0, scale: 0.5 }}
         transition={{
-          delay: index * 0.01,
+          delay: index * 0.1,
           type: "spring",
           stiffness: 120,
           damping: 20,
