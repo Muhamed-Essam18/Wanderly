@@ -61,16 +61,16 @@ export default function Navbar() {
         </Link>
       </li>
       <li id="contact" className={`hover:text-primary cursor-pointer`}>
-        <Link
+        <a
           className={`hover:text-primary cursor-pointer transition text-[15px] ${
             isActive("/contact")
               ? "bg-primary/20 text-primary rounded-lg px-3 py-2   "
               : "text-text-primary"
           }`}
-          href="Contat"
+          href="https://essam-portfolio-nine.vercel.app/"
         >
           Contact
-        </Link>
+        </a>
       </li>
     </ul>
   );

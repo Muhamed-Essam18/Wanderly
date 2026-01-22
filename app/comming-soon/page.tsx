@@ -41,7 +41,7 @@ const upcomingFeatures = [
 
 const ComingSoon = () => {
   return (
-    <div className="min-h-screen bg-background w-[90%] m-auto">
+    <div className="min-h-screen bg-background w-[90%] md:w-full m-auto flex flex-col justify-center items-center">
       <div className="container pt-10 pb-10 ">
         <motion.section
           initial={{ opacity: 0, x: -50 }}
@@ -67,7 +67,7 @@ const ComingSoon = () => {
           className=" pb-20"
         >
           <div className="grid md:grid-cols-2 gap-6 justify-center ">
-            {upcomingFeatures.map((feature, index) => (
+            {upcomingFeatures.map((feature) => (
               <div
                 key={feature.title}
                 className="bg-surface rounded-2xl shadow-2xl shadow-black p-8 group hover:border-primary/30 "
@@ -78,11 +78,11 @@ const ComingSoon = () => {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-display text-xl font-semibold text-text-primary">
+                      <h3 className="font-display text-md md:text-xl font-semibold text-text-primary">
                         {feature.title}
                       </h3>
                       <span
-                        className={`text-xs px-2 py-1 rounded-full font-medium ${
+                        className={`text-xs px-2 py-1 rounded-full  ${
                           feature.status === "In Development"
                             ? "bg-primary/20 text-primary"
                             : feature.status === "Coming Soon"
@@ -93,7 +93,7 @@ const ComingSoon = () => {
                         {feature.status}
                       </span>
                     </div>
-                    <p className="text-text-muted text-sm leading-relaxed">
+                    <p className="text-text-muted text-xs md:text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

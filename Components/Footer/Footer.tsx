@@ -15,20 +15,31 @@ const Footer = () => {
 
         <ul className="flex flex-col md:flex-row gap-4 text-sm  text-center">
           <li>
-            <a href="#" className="hover:text-primary transition-colors">
+            <a href="/" className="hover:text-primary transition-colors">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/about" className="hover:text-primary transition-colors">
               About
             </a>
           </li>
           <li className="hidden md:block">|</li>
           <li>
-            <a href="" className="hover:text-primary transition-colors">
-              Upcoming Features
+            <a
+              href="/comming-soon"
+              className="hover:text-primary transition-colors"
+            >
+              comming soon
             </a>
           </li>
           <li className="hidden md:block">|</li>
           <li>
-            <a href="" className="hover:text-primary transition-colors">
-              Meet The Developer
+            <a
+              href="https://essam-portfolio-nine.vercel.app/"
+              className="hover:text-primary transition-colors"
+            >
+              Contact
             </a>
           </li>
         </ul>
