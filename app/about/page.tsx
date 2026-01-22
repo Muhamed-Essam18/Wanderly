@@ -3,8 +3,8 @@ import { Globe2, Target, Users, Compass } from "lucide-react";
 import { motion } from "motion/react";
 const page = () => {
   return (
-    <div className="min-h-screen bg-background mt-15">
-      <div className="container pb-16 flex flex-col items-center justify-center m-auto">
+    <div className="min-h-screen bg-background mt-15 w-[90%] m-auto">
+      <div className="container  md:pb-16 flex flex-col items-center justify-center m-auto">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0, x: -50 }}
@@ -32,7 +32,7 @@ const page = () => {
         <motion.section
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0, transition: { duration: 0.6 } }}
-          className="py-12"
+          className="md:py-12"
         >
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-surface shadow-2xl shadow-black rounded-2xl p-8 text-center">
@@ -83,7 +83,7 @@ const page = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-primary mb-6 text-center">
               Why Wanderly?
             </h2>
-            <div className="space-y-4 text-text-muted leading-relaxed">
+            <div className="space-y-4 text-center text-text-muted leading-relaxed">
               <p>
                 Planning a trip shouldn't feel overwhelming. Yet, most travelers
                 spend hours researching destinations, comparing costs, and

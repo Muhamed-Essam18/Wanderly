@@ -19,13 +19,13 @@ const Footer = () => {
               About
             </a>
           </li>
-          <li>|</li>
+          <li className="hidden md:block">|</li>
           <li>
             <a href="" className="hover:text-primary transition-colors">
               Upcoming Features
             </a>
           </li>
-          <li>|</li>
+          <li className="hidden md:block">|</li>
           <li>
             <a href="" className="hover:text-primary transition-colors">
               Meet The Developer

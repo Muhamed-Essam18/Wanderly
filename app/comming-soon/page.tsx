@@ -41,8 +41,8 @@ const upcomingFeatures = [
 
 const ComingSoon = () => {
   return (
-    <div className="min-h-screen bg-background ">
-      <div className="container pt-10 pb-10 m-auto">
+    <div className="min-h-screen bg-background w-[90%] m-auto">
+      <div className="container pt-10 pb-10 ">
         <motion.section
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0, transition: { duration: 0.6 } }}
@@ -66,7 +66,7 @@ const ComingSoon = () => {
           whileInView={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
           className=" pb-20"
         >
-          <div className="grid md:grid-cols-2 gap-6 w-[90%] m-auto">
+          <div className="grid md:grid-cols-2 gap-6 justify-center ">
             {upcomingFeatures.map((feature, index) => (
               <div
                 key={feature.title}
