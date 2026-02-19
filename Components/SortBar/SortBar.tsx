@@ -23,17 +23,17 @@ const SortBar = ({ resultsNo }: any) => {
       variants={sortAnimation}
       initial="hidden"
       animate="show"
-      className="flex flex-row items-center justify-between rounded-2xl shadow-2xl shadow-black mt-10 gap-2 bg-surface w-[90%] md:w-1/2 m-auto  "
+      className="flex flex-row items-center justify-between py-6 px-10 rounded-2xl shadow-2xl shadow-black mt-10 gap-2 bg-surface w-[90%] md:w-1/2 m-auto  "
     >
-      <div className="w-full text-sm font-bold md:text-lg p-6 text-text-primary flex items-center gap-2 flex-row">
-        <CiSearch className="text-2xl" /> {resultsNo} Destinations Found
+      <div className="w-full text-sm font-bold md:text-lg  text-text-primary flex items-center gap-2 flex-row">
+        <CiSearch className="text-xl" /> {resultsNo} Destinations Found
       </div>
-      <div className="flex flex-col md:flex-row w-full justify-center items-center">
-        <span className="text-sm md:text-lg mr-2 text-primary font-bold">
+      <div className="w-[50%] flex flex-col md:flex-row items-center ">
+        <span className="text-sm md:text-lg mr-2 text-primary font-bold text-center w-2/3">
           Sort by
         </span>
         <Select onValueChange={sort.setSortType} value={sort.sortType}>
-          <SelectTrigger className="w-2/3 text-xs md:text-sm text-primary bg-secondary border border-background shadow-2xl shadow-balck ">
+          <SelectTrigger className="w-full md:w-2/3 text-xs md:text-sm text-primary bg-secondary border border-background shadow-2xl shadow-balck ">
             <SelectValue className="text-white" placeholder="Sort By" />
           </SelectTrigger>
           <SelectContent className="bg-surface text-primary border border-secondary">

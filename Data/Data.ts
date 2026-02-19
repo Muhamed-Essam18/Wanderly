@@ -211,7 +211,7 @@ export const countries: Country[] = [
     weeklyBudget: { min: 1100, max: 1200 },
     travelStyles: ["City", "Nature", "Beach"],
     vibe: ["vibrant", "modern"],
-    cities: ["Bogotá", "Medellín", "Cartagena", "Cali"],
+    cities: ["Bogotá", "Medellin", "Cartagena", "Cali"],
     landmarks: [
       "Lost City",
       "Cocora Valley",
@@ -1005,3 +1005,24 @@ export const vibeOptions = [
   "traditional",
 ] as const;
 export const budgetLevels = ["low", "medium", "high"] as const;
+export const countryWhiteList = new Set(
+  countries.map((country) => country.name.toLowerCase()),
+);
+export const citiesWhiteList = new Set(
+  countries.flatMap((country) =>
+    country.cities.map((city) => city.toLowerCase()),
+  ),
+);
+export const placesTypes = [
+  "Top-Landmarks",
+  "Hotels",
+  "Restauranst",
+  "Historical Places",
+  "Museums",
+  "Beaches",
+  "Woods",
+  "Mountains",
+  "Parks & Green areas",
+];
+
+console.log(citiesWhiteList, countryWhiteList);
