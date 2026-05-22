@@ -12,19 +12,19 @@ const BudgetSelector = () => {
   const cardState = useContext(Context);
   const styleClicked = (key: string) => {
     cardState.setSelectedStyle((prev: string[]) =>
-      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
+      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key],
     );
   };
   const vibeClicked = (key: string) => {
     cardState.setSelectedVibe((prev: string[]) =>
-      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
+      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key],
     );
   };
 
   const checkAllHandler = (
     checked: boolean,
     setState: React.Dispatch<React.SetStateAction<string[]>>,
-    options: string[]
+    options: string[],
   ) => {
     checked ? setState(options) : setState([]);
   };
@@ -124,7 +124,7 @@ const BudgetSelector = () => {
                     checkAllHandler(
                       e.target.checked,
                       cardState.setSelectedStyle,
-                      [...travelStyles]
+                      [...travelStyles],
                     )
                   }
                   checked={
@@ -161,7 +161,7 @@ const BudgetSelector = () => {
                     checkAllHandler(
                       e.target.checked,
                       cardState.setSelectedVibe,
-                      [...vibeOptions]
+                      [...vibeOptions],
                     )
                   }
                   checked={cardState.SelectedVibe.length === vibeOptions.length}

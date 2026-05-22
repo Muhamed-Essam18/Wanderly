@@ -21,7 +21,7 @@ const Landing = () => {
         <h1 className="text-4xl md:text-6xl text-text-primary text-center font-extrabold">
           Where will you
           <p className="text-5xl md:text-7xl text-primary inline font-bold">
-            wander
+            {""} wander {""}
           </p>
           next?
         </h1>

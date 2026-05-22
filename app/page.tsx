@@ -32,7 +32,7 @@ export default function Home() {
       (country) =>
         country.weeklyBudget.min < Budget &&
         (country.travelStyles.some((s) => SelectedStyle.includes(s)) ||
-          country.vibe.some((v) => SelectedVibe.includes(v)))
+          country.vibe.some((v) => SelectedVibe.includes(v))),
     );
 
     return [...filtered].sort((a, b) => {
@@ -91,7 +91,7 @@ export default function Home() {
             ease: easeInOut,
             duration: 0.6,
           }}
-          className=" flex flex-col md:grid md:grid-cols-3 mt-10"
+          className=" flex flex-col md:grid  md:grid-cols-3 mt-10"
         >
           <LayoutGroup>
             <AnimatePresence initial={false} mode="popLayout">

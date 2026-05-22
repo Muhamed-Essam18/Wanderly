@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import { useState } from "react";
 import CountryImg from "./CountryImg";
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 interface CountryCardProps {
   country: Country;
   styleState: String[];
