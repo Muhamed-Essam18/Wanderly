@@ -1,25 +1,25 @@
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-
 export const getData = async function (query: string, cityName: string, placeType: string) {
-  const data = await fetch(
-    `${baseUrl}/api/cities/?query=${encodeURIComponent(query)}&cityName=${encodeURIComponent(cityName)}&placeType=${encodeURIComponent(placeType)}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "no-store",
+  const params = new URLSearchParams({
+    query,
+    cityName,
+    placeType,
+  });
+
+  const data = await fetch(`/api/cities?${params.toString()}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
+    cache: "no-store",
+  });
 
   if (!data.ok) {
-    throw new Error(`Failed to fetch city data: ${data.status} ${data.statusText}`);
+    const errorText = await data.text();
+    throw new Error(`Failed to fetch city data: ${data.status} ${data.statusText} - ${errorText}`);
   }
 
   const result = await data.json();
-  const places = result.places;
+  const places = result.places || [];
 
   return places;
 };

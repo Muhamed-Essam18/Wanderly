@@ -23,23 +23,40 @@ export async function GET(request: NextRequest) {
     return Response.json(data);
   }
 
-  const res = await fetch(
-    "https://places.googleapis.com/v1/places:searchText",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY!,
-        "X-Goog-FieldMask":
-          "places.displayName,places.formattedAddress,places.rating,places.googleMapsUri,places.photos,places.types,",
-      },
-      body: JSON.stringify({
-        textQuery: query,
-      }),
+  if (!process.env.GOOGLE_MAPS_API_KEY) {
+    console.error("Missing GOOGLE_MAPS_API_KEY");
+    return Response.json(
+      { error: "Missing GOOGLE_MAPS_API_KEY in environment" },
+      { status: 500 },
+    );
+  }
+
+  const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY,
+      "X-Goog-FieldMask":
+        "places.displayName,places.formattedAddress,places.rating,places.googleMapsUri,places.photos,places.types",
     },
-  );
+    body: JSON.stringify({
+      textQuery: query,
+    }),
+  });
+
+  if (!res.ok) {
+    const errorBody = await res.text();
+    console.error("Google Places API request failed:", res.status, errorBody);
+    return Response.json(
+      { error: "Google Places API request failed", details: errorBody },
+      { status: 502 },
+    );
+  }
+
   const data = await res.json();
-  console.log(data);
+  console.log("Google Places API response:", data);
+
+  const places = Array.isArray(data.places) ? data.places : [];
 
   const shouldIncludePlace = (place: any) => {
     if (!place.types) return false;
