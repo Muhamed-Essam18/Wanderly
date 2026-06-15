@@ -8,19 +8,17 @@ interface PageProps {
 }
 const PlaceType = async ({ params }: PageProps) => {
   const { cityName, placeType } = await params;
-  console.log(typeof placesTypes);
-  console.log(placesTypes);
+ 
 
   if (
     (!countryWhiteList.has(cityName.toLowerCase()) &&
       !citiesWhiteList.has(cityName.toLowerCase())) ||
-    !placesTypes.includes(placeType)
+    !placesTypes.some((type) => type.name === placeType)
   ) {
     return notFound();
   }
   const spaceLessCityName = cityName.replace(/\s/g, "");
-
-  const data = await getData(placeType + " " + "in" + " " + spaceLessCityName);
+  const data = await getData(placeType + " " + "in" + " " + spaceLessCityName,cityName,placeType);
 
   return (
     <>

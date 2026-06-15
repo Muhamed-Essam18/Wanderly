@@ -62,6 +62,7 @@ export default function Home() {
       return visibleCountries.slice(0, 5);
     }
   }, [visibleCountries, showMore]);
+
   return (
     <>
       <Landing />

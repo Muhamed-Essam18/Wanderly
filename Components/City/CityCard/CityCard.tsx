@@ -7,7 +7,7 @@ type CityCardProps = {
   name: string;
   adress: string;
   rating: number;
-  picUrl: string;
+  picUrl?: string | null;
   place?: string;
   mapsUrl: string;
 };
@@ -26,21 +26,17 @@ const spaceLess = (word: string) => {
   return word.replaceAll(/[^A-Z]  /gi, " ");
 };
 export const CityCard = (props: CityCardProps) => {
-  const imgSrc = `/api/cities/image?photoName=${encodeURIComponent(props.picUrl)}`;
+  const imgSrc = props.picUrl
+    ? props.picUrl.startsWith("data:")
+      ? props.picUrl
+      : `/api/cities/image?photoName=${encodeURIComponent(props.picUrl)}`
+    : "/imgs/logo1.png";
 
   return (
     <>
       <motion.a
         href={props.mapsUrl}
-        initial={{ x: -50, y: 50 }}
-        animate={{ x: 0, y: 0 }}
-        exit={{ opacity: 0, scale: 0.5 }}
-        transition={{
-          type: "spring",
-          stiffness: 160,
-          damping: 20,
-        }}
-        className="cursor-pointer group overflow-hidden  w-[90%] text-text-primary m-auto bg-surface my-5 rounded-2xl  border border-text-muted/15 hover:scale-105 transition-all duration-500"
+       
       >
         <div className="relative h-50 overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/30 to-transparent" />

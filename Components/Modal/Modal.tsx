@@ -87,7 +87,7 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
           {/* Costs */}
           <div className="grid grid-cols-2 gap-4">
             <Link
-              href={`cities/${spaceLess(country.name)}/Places/Restauranst`}
+              href={`cities/${spaceLess(country.name)}/Places/Resturants`}
               className="rounded-xl border border-text-muted/5 shadow-black/40 shadow-2xl bg-surface p-4 hover:bg-primary/60 transition-all duration-300 group"
             >
               <div className="mb-1 flex items-center gap-2 text-xs uppercase text-primary group-hover:text-text-primary ">

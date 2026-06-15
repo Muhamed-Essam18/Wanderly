@@ -1,17 +1,61 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { HiMenu, HiX } from "react-icons/hi";
 import Backdrop from "../Backdrop/Backdrop";
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [userEmail, setUserEmail] = useState<string>("");
+  const router = useRouter();
+  const path = usePathname();
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem("accessToken");
+      const email = localStorage.getItem("userEmail");
+      if (token) {
+        setIsLoggedIn(true);
+        setUserEmail(email || "");
+      } else {
+        setIsLoggedIn(false);
+        setUserEmail("");
+      }
+    };
+
+    checkAuth();
+
+    const handleStorage = () => {
+      checkAuth();
+    };
+
+    window.addEventListener("storage", handleStorage);
+    return () => {
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, [path]);
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("userEmail");
+      setIsLoggedIn(false);
+      setUserEmail("");
+      router.push("/");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   const { scrollY } = useScroll();
-  const path = usePathname();
   const isActive = (id: string) => id === path;
   const nav = {
     hidden: { opacity: 0, y: 20 },
@@ -23,49 +67,53 @@ export default function Navbar() {
     ["rgba(0,0,0,0)", "rgba(12, 17, 31, 1)"]
   );
   const navContent = (
-    <ul className="flex flex-col md:flex-row font-medium  gap-6 px-6 py-10  w-full md:w-auto md:text-xl text-center overflow-hidden">
-      <li id="home" className={`hover:text-primary cursor-pointer`}>
+    <ul className="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-6 text-sm md:text-base ">
+      <li className="hover:text-primary">
         <Link
-          className={`hover:text-primary cursor-pointer transition text-[15px] ${
+          onClick={() => setOpen(false)}
+          className={`transition rounded-lg px-3 py-2 ${
             isActive("/")
-              ? "bg-primary/20 text-primary rounded-lg px-3 py-2 "
-              : "text-text-primary"
+              ? "bg-primary/20 text-primary"
+              : "text-text-primary hover:text-primary"
           }`}
           href="/"
         >
           Home
         </Link>
       </li>
-      <li id="/about" className={`hover:text-primary cursor-pointer`}>
+      <li className="hover:text-primary">
         <Link
-          className={`hover:text-primary cursor-pointer transition text-[15px] ${
+          onClick={() => setOpen(false)}
+          className={`transition rounded-lg px-3 py-2 ${
             isActive("/about")
-              ? "bg-primary/20 text-primary rounded-lg px-3 py-2 "
-              : "text-text-primary"
+              ? "bg-primary/20 text-primary"
+              : "text-text-primary hover:text-primary"
           }`}
           href="/about"
         >
           About
         </Link>
       </li>
-      <li id="comming-soon" className={`hover:text-primary cursor-pointer`}>
+      <li className="hover:text-primary">
         <Link
-          className={`hover:text-primary cursor-pointer transition text-[15px] ${
+          onClick={() => setOpen(false)}
+          className={`transition rounded-lg px-3 py-2 ${
             isActive("/comming-soon")
-              ? "bg-primary/20 text-primary rounded-lg px-3 py-2  "
-              : "text-text-primary"
+              ? "bg-primary/20 text-primary"
+              : "text-text-primary hover:text-primary"
           }`}
           href="/comming-soon"
         >
-          Comming soon
+          Coming soon
         </Link>
       </li>
-      <li id="contact" className={`hover:text-primary cursor-pointer`}>
+      <li className="hover:text-primary">
         <a
-          className={`hover:text-primary cursor-pointer transition text-[15px] ${
+          onClick={() => setOpen(false)}
+          className={`transition rounded-lg px-3 py-2 ${
             isActive("/contact")
-              ? "bg-primary/20 text-primary rounded-lg px-3 py-2   "
-              : "text-text-primary"
+              ? "bg-primary/20 text-primary"
+              : "text-text-primary hover:text-primary"
           }`}
           href="https://essam-portfolio-nine.vercel.app/"
         >
@@ -73,6 +121,66 @@ export default function Navbar() {
         </a>
       </li>
     </ul>
+  );
+
+  const authButtonsDesktop = isLoggedIn ? (
+    <div className="hidden md:flex items-center gap-3 pl-6 border-l border-white/10">
+      <span className="text-sm text-text-primary truncate max-w-[180px]">
+        {userEmail}
+      </span>
+      <button
+        onClick={handleLogout}
+        className="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition text-sm font-medium"
+      >
+        Logout
+      </button>
+    </div>
+  ) : (
+    <div className="hidden md:flex items-center gap-3 pl-6 border-l border-white/10">
+      <Link
+        href="/auth/login"
+        className="px-4 py-2 text-text-primary hover:text-primary transition text-sm font-medium"
+      >
+        Login
+      </Link>
+      <Link
+        href="/auth/register"
+        className="px-4 py-2  text-primary rounded-lg hover:bg-primary/30 transition text-sm font-medium"
+      >
+        Register
+      </Link>
+    </div>
+  );
+
+  const mobileAuthSection = isLoggedIn ? (
+    <div className="border-t border-white/10 pt-6 mt-4 px-6 text-center pb-8">
+      <div className="flex flex-col gap-3">
+        <span className="text-sm text-text-primary break-words">{userEmail}</span>
+        <button
+          onClick={handleLogout}
+          className="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition text-sm font-medium"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  ) : (
+    <div className="border-t border-white/10 pt-6 mt-4 px-6">
+      <div className="flex flex-col gap-3">
+        <Link
+          href="/auth/login"
+          className="px-4 py-2 text-text-primary hover:text-primary transition text-sm font-medium"
+        >
+          Login
+        </Link>
+        <Link
+          href="/auth/register"
+          className="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition text-sm font-medium text-center"
+        >
+          Register
+        </Link>
+      </div>
+    </div>
   );
 
   return (
@@ -113,8 +221,9 @@ export default function Navbar() {
             >
               {open ? <HiX /> : <HiMenu />}
             </button>
-            <div className="hidden md:flex items-center overflow-hidden">
+            <div className="hidden md:flex items-center gap-6">
               {navContent}
+              {authButtonsDesktop}
             </div>
           </div>
         </div>
@@ -127,7 +236,10 @@ export default function Navbar() {
             }
   `}
         >
-          {navContent}
+          <div className="py-4">
+            {navContent}
+          </div>
+          {mobileAuthSection}
         </motion.div>
       </motion.nav>
     </>

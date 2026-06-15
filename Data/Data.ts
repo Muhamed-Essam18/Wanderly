@@ -1014,15 +1014,15 @@ export const citiesWhiteList = new Set(
   ),
 );
 export const placesTypes = [
-  "Top-Landmarks",
-  "Hotels",
-  "Restauranst",
-  "Historical Places",
-  "Museums",
-  "Beaches",
-  "Woods",
-  "Mountains",
-  "Parks & Green areas",
+  {name: 'Top-Landmarks', googleInputValue:  ['tourist_attraction','hotel','resort','hostel','lodging','motel']},
+  {name: 'Hotels', googleInputValue: ['hotel','resort','hostel','lodging','motel']},
+  {name: 'Resturants', googleInputValue:['resturant','cafe','bar','food','meal_delivery','meal_takeaway']},
+  {name: 'Historical Places', googleInputValue: ['historical_place','historical_landmark','castle','tourist_attraction']},
+  {name: 'Museums', googleInputValue: ['museum','art_gallery','historical_landmark','castle','tourist_attraction','historical_place']},
+  {name: 'Beaches', googleInputValue: ['beache']},
+  {name: 'Woods', googleInputValue: ['woods','natural_feature','park','forest']},
+  {name: 'Mountains', googleInputValue: ['mountain_peak','natural_feature','historical_landmark']},
+  {name: 'Parks & Green areas', googleInputValue: ['park','ammusement_park','garden','sports_activity_location','playground','botanical_garden']},
 ];
 
-console.log(citiesWhiteList, countryWhiteList);
+

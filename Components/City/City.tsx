@@ -1,5 +1,7 @@
+'use client';
 import SelectionsBar from "./SelectionsBar";
 import { CityCard } from "./CityCard/CityCard";
+import { motion } from "framer-motion";
 interface Props {
   cityName: string;
   data: any;
@@ -27,19 +29,31 @@ const City = ({ cityName, data, placeType }: Props) => {
       </section>
       <section className="grid grid-cols-1 md:grid-cols-3">
         {data?.length > 0 ? (
-          data?.map((place: any) => {
-            const photoName = place.photos?.[0]?.name;
-            console.log(photoName);
+          data?.map((place: any, index: number) => {
+            const photoSrc = place.cachedImage ?? place.photos?.[0]?.name;
             return (
-              <CityCard
-                key={place.displayName.text}
-                name={place.displayName.text}
-                adress={place.formattedAddress}
-                rating={place.rating}
-                picUrl={photoName}
-                place={placeType}
-                mapsUrl={place.googleMapsUri}
-              />
+              <motion.div
+                initial={{ x: -50, y: 50 }}
+                animate={{ x: 0, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{
+                  delay: index * 0.08,
+                  type: "spring",
+                  stiffness: 160,
+                  damping: 20,
+                }}
+                className="cursor-pointer group overflow-hidden  w-[90%] text-text-primary m-auto bg-surface my-5 rounded-2xl  border border-text-muted/15 hover:scale-105 transition-all duration-500"
+                key={place.id ?? index}
+              >
+                <CityCard
+                  name={place.displayName.text}
+                  adress={place.formattedAddress}
+                  rating={place.rating}
+                  picUrl={photoSrc}
+                  place={placeType}
+                  mapsUrl={place.googleMapsUri}
+                />
+              </motion.div>
             );
           })
         ) : (

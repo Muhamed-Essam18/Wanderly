@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+
 import {
   Select,
   SelectContent,
@@ -19,7 +19,7 @@ const SelectionsBar = ({ length }: { length: string }) => {
 
   const decodedPlaceType = placeType
     ? decodeURIComponent(placeType)
-    : placesTypes[0];
+    : placesTypes[0].name;
   const router = useRouter();
   return (
     <section className="flex justify-center items-center ">
@@ -44,11 +44,11 @@ const SelectionsBar = ({ length }: { length: string }) => {
             <SelectContent className="bg-surface text-primary border border-secondary">
               {placesTypes.map((placeType) => (
                 <SelectItem
-                  key={placeType}
-                  value={placeType}
+                  key={placeType.name}
+                  value={placeType.name}
                   className="bg-surface rounded-lg p-2 text-primary md:text-sm text-xs "
                 >
-                  {placeType}
+                  {placeType.name}
                 </SelectItem>
               ))}
             </SelectContent>
