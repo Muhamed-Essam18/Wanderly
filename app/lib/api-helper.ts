@@ -1,3 +1,25 @@
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_APP_URL) {
+    return process.env.NEXT_PUBLIC_APP_URL;
+  }
+
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  if (process.env.NODE_ENV === "development") {
+    return "http://localhost:3000";
+  }
+
+  throw new Error(
+    "Missing NEXT_PUBLIC_APP_URL or VERCEL_URL environment variable for server-side API requests",
+  );
+};
+
 export const getData = async function (query: string, cityName: string, placeType: string) {
   const params = new URLSearchParams({
     query,
@@ -5,7 +27,11 @@ export const getData = async function (query: string, cityName: string, placeTyp
     placeType,
   });
 
-  const data = await fetch(`/api/cities?${params.toString()}`, {
+  const url = typeof window === "undefined"
+    ? `${getBaseUrl()}/api/cities?${params.toString()}`
+    : `/api/cities?${params.toString()}`;
+
+  const data = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
