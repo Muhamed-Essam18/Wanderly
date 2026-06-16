@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fetch-all-places": "npx ts-node --esm scripts/fetch-all-places.ts",
+    "check-registration": "npx ts-node --esm scripts/check-registration.ts"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",
@@ -43,6 +45,7 @@
     "eslint-config-next": "16.1.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5"
+    "typescript": "^5",
+    "ts-node": "^10.9.2"
   }
 }

@@ -43,7 +43,7 @@ export default function RegisterPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Registration failed");
+        setError("sorry we are facing some issues, please try again later");
         return;
       }
 
