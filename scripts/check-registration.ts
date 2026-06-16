@@ -19,9 +19,9 @@ function loadEnv() {
 loadEnv();
 
 async function main() {
-  const { connectDB } = await import("../lib/mongodb.ts");
-  const modelTest = (await import("../app/models/testModel.ts")).default;
-  const { countries } = await import("../Data/Data.ts");
+  const { connectDB } = await import("../lib/mongodb");
+  const modelTest = (await import("../app/models/testModel")).default;
+  const { countries } = await import("../Data/Data");
 
   await connectDB();
 
