@@ -1022,7 +1022,7 @@ export const placesTypes = [
   {name: 'Beaches', googleInputValue: ['beache']},
   {name: 'Woods', googleInputValue: ['woods','natural_feature','park','forest']},
   {name: 'Mountains', googleInputValue: ['mountain_peak','natural_feature','historical_landmark']},
-  {name: 'Parks & Green areas', googleInputValue: ['park','ammusement_park','garden','sports_activity_location','playground','botanical_garden']},
+  {name: 'Parks and gardens', googleInputValue: ['park','ammusement_park','garden','sports_activity_location','playground','botanical_garden']},
 ];
 
 
