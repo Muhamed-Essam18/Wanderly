@@ -26,21 +26,30 @@ export const getData = async function (query: string, cityName: string, placeTyp
     cityName,
     placeType,
   });
+  
 
   const url = typeof window === "undefined"
     ? `${getBaseUrl()}/api/cities?${params.toString()}`
     : `/api/cities?${params.toString()}`;
 
-  const data = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    cache: "no-store",
-  });
+  let data;
+  try {
+    data = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
+  } catch (error) {
+    console.error("City API fetch failed", { url, error });
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`Failed to fetch city data: network error - ${message}`);
+  }
 
   if (!data.ok) {
     const errorText = await data.text();
+    console.error("City API returned non-ok response", { url, status: data.status, statusText: data.statusText, errorText });
     throw new Error(`Failed to fetch city data: ${data.status} ${data.statusText} - ${errorText}`);
   }
 

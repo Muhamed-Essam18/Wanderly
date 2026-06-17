@@ -1,16 +1,17 @@
 import mongoose from "mongoose";
+import { NextResponse } from "next/server";
 
 export async function GET() {
 
   try {
     await mongoose.connect(process.env.MONGODB_URI!);
 
-    return Response.json({
+    return NextResponse.json({
       success: true,
       message: "MongoDB Connected Successfully",
     });
   } catch (error) {
-    return Response.json(
+    return NextResponse.json(
       {
         success: false,
         message: "Connection Failed",

@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import modelTest from "../../models/testModel";
 import {connectDB} from "../../../lib/mongodb";
 import { placesTypes } from "@/Data/Data";
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
   const tagSet = new Set(tags?.googleInputValue || []);
 
   if (!query) {
-    return Response.json({ error: "Missing query" }, { status: 400 });
+    return NextResponse.json({ error: "Missing query" }, { status: 400 });
   }
 
   await connectDB();
@@ -20,12 +20,12 @@ export async function GET(request: NextRequest) {
   if (existingData) {
     const data = existingData.output;
     console.log("Data retrieved from MongoDB");
-    return Response.json(data);
+    return NextResponse.json(data);
   }
 
   if (!process.env.GOOGLE_MAPS_API_KEY) {
     console.error("Missing GOOGLE_MAPS_API_KEY");
-    return Response.json(
+    return NextResponse.json(
       { error: "Missing GOOGLE_MAPS_API_KEY in environment" },
       { status: 500 },
     );
@@ -47,14 +47,13 @@ export async function GET(request: NextRequest) {
   if (!res.ok) {
     const errorBody = await res.text();
     console.error("Google Places API request failed:", res.status, errorBody);
-    return Response.json(
+    return NextResponse.json(
       { error: "Google Places API request failed", details: errorBody },
       { status: 502 },
     );
   }
 
   const data = await res.json();
-  console.log("Google Places API response:", data);
 
   const places = Array.isArray(data.places) ? data.places : [];
 
@@ -103,7 +102,7 @@ export async function GET(request: NextRequest) {
 
   const finalData = { places: cachedPlaces };
 
-  console.log(finalData);
+
   console.log("Data retrieved from Google Places API");
 
   await modelTest.create({
@@ -113,5 +112,5 @@ export async function GET(request: NextRequest) {
     output: finalData,
   });
 
-  return Response.json(finalData);
+  return NextResponse.json(finalData);
 }
