@@ -119,16 +119,3 @@ Deploy to Vercel for easiest integration with Next.js. Configure the same env va
 1. Fork the repo and create a feature branch.
 2. Open a pull request describing the change.
 
-**License & Contact**
-
-Specify a license file (`LICENSE`) if you plan to open-source. For questions, contact the maintainer in the repository.
-
----
-
-If you want, I can also:
-
-- add example `.env.local.example` file,
-- embed a couple screenshots into `README.md`, or
-- open a PR with the README and example env file.
-
-Tell me which additions you want and I'll apply them.
