@@ -12,9 +12,11 @@ Wanderly is a Next.js-based travel decision assistant that helps users explore c
 
 ## Screenshots
 
-![Wanderly Screenshot 1](./screenshots/1.png)
-![Wanderly Screenshot 2](./screenshots/2.png)
-![Wanderly Screenshot 3](./screenshots/3.png)
+![Home Page](./readme/Home%20Page.png)
+![Countries Recommendations](./readme/Countries%20Recommendations.png)
+![Country Details](./readme/Country%20details.png)
+![Places Fetch](./readme/Places%20fetch.png)
+![Mobile View](./readme/Mobile%20view.png)
 
 **Table of contents**
 
