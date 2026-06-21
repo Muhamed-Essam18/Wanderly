@@ -6,7 +6,15 @@ Wanderly is a Next.js-based travel decision assistant that helps users explore c
 
 **Stack:** Next.js 16, React 19, TypeScript, Tailwind CSS, MongoDB, Mongoose, JWT auth
 
-**Live demo:** (none yet)
+**Links:**
+- **Repository:** https://github.com/Muhamed-Essam18/Wanderly
+- **Live Demo:** https://wanderly-two.vercel.app/
+
+## Screenshots
+
+![Wanderly Screenshot 1](./screenshots/1.png)
+![Wanderly Screenshot 2](./screenshots/2.png)
+![Wanderly Screenshot 3](./screenshots/3.png)
 
 **Table of contents**
 
@@ -21,7 +29,7 @@ Wanderly is a Next.js-based travel decision assistant that helps users explore c
 
 **Project**
 
-Wanderly is a small travel app prototype that: finds cities and places, lets users create accounts, and uses JWT-based auth for protected API routes. The app is organized as a Next.js app directory project and connects to a MongoDB database.
+Wanderly is a small travel app prototype that: finds cities and places, lets users create accounts, and uses JWT-based auth for protected API routes. The app is organized as a Next.js app director[...]
 
 **Quick Start (local)**
 
@@ -61,7 +69,7 @@ Keep secrets out of source control and rotate them for production.
 
 Authentication endpoints (JSON request bodies unless noted):
 
-- `POST /api/auth/register` — register a new user. Body: `{ email, password, confirmPassword }` — returns `accessToken` and sets `accessToken`/`refreshToken` cookies. See [app/api/auth/register/route.ts](app/api/auth/register/route.ts).
+- `POST /api/auth/register` — register a new user. Body: `{ email, password, confirmPassword }` — returns `accessToken` and sets `accessToken`/`refreshToken` cookies. See [app/api/auth/registe[...]
 - `POST /api/auth/login` — login. Body: `{ email, password }` — returns `accessToken` and sets cookies. See [app/api/auth/login/route.ts](app/api/auth/login/route.ts).
 - `POST /api/auth/refresh` — refresh access token using `refreshToken` cookie. See [app/api/auth/refresh/route.ts](app/api/auth/refresh/route.ts).
 - `POST /api/auth/logout` — clears auth cookies. See [app/api/auth/logout/route.ts](app/api/auth/logout/route.ts).
@@ -106,7 +114,7 @@ There are no automated tests included. Use the `lint` script to check code quali
 
 **Deployment**
 
-Deploy to Vercel for easiest integration with Next.js. Configure the same env vars in the Vercel dashboard (`MONGODB_URI`, `ACCESS_TOKEN_SECRET`, `REFRESH_TOKEN_SECRET`). If using a different host, ensure cookies set by the app are configured for your domain and HTTPS.
+Deploy to Vercel for easiest integration with Next.js. Configure the same env vars in the Vercel dashboard (`MONGODB_URI`, `ACCESS_TOKEN_SECRET`, `REFRESH_TOKEN_SECRET`). If using a different hos[...]
 
 **Security notes**
 
@@ -118,4 +126,3 @@ Deploy to Vercel for easiest integration with Next.js. Configure the same env va
 
 1. Fork the repo and create a feature branch.
 2. Open a pull request describing the change.
-
