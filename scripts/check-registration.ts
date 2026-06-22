@@ -1,5 +1,9 @@
+/// <reference types="node" />
 import fs from "fs";
 import path from "path";
+import { connectDB } from "../lib/mongodb.ts";
+import modelTest from "../app/models/testModel.ts";
+import { countries } from "../Data/Data.ts";
 
 function loadEnv() {
   const envPath = path.resolve(process.cwd(), ".env");
@@ -19,10 +23,6 @@ function loadEnv() {
 loadEnv();
 
 async function main() {
-  const { connectDB } = await import("@/lib/mongodb");
-  const { default: modelTest } = await import("@/app/models/testModel");
-  const { countries } = await import("@/Data/Data");
-
   await connectDB();
 
   const cityToCountry = new Map<string, string>();

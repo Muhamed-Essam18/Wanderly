@@ -10,7 +10,7 @@ const PlaceType = async ({ params }: PageProps) => {
   const { cityName, placeType } = await params;
     const spaceLessCityName = cityName;
     const decodedPlaceType = decodeURIComponent(placeType);
-   console.log("placeType:", decodedPlaceType);
+ 
    
   if (
     (!countryWhiteList.has(cityName.toLowerCase()) &&
@@ -27,7 +27,7 @@ const PlaceType = async ({ params }: PageProps) => {
       <City
         cityName={spaceLessCityName}
         data={data}
-        placeType={placeType}
+        placeType={decodedPlaceType}
       ></City>
     </>
   );

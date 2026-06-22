@@ -1,5 +1,9 @@
+/// <reference types="node" />
 import fs from "fs";
 import path from "path";
+import { connectDB } from "../lib/mongodb.ts";
+import modelTest from "../app/models/testModel.ts";
+import { countries, placesTypes } from "../Data/Data.ts";
 
 const envPath = path.resolve(process.cwd(), ".env");
 if (fs.existsSync(envPath)) {
@@ -14,10 +18,6 @@ if (fs.existsSync(envPath)) {
     }
   }
 }
-
-const { connectDB } = await import("../lib/mongodb.ts");
-const modelTest = (await import("../app/models/testModel.ts")).default;
-const { countries, placesTypes } = await import("../Data/Data.ts");
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

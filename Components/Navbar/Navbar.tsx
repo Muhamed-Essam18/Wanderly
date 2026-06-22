@@ -1,58 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { HiMenu, HiX } from "react-icons/hi";
 import Backdrop from "../Backdrop/Backdrop";
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/useAuth";
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [userEmail, setUserEmail] = useState<string>("");
   const router = useRouter();
   const path = usePathname();
-
-  useEffect(() => {
-    const checkAuth = () => {
-      const token = localStorage.getItem("accessToken");
-      const email = localStorage.getItem("userEmail");
-      if (token) {
-        setIsLoggedIn(true);
-        setUserEmail(email || "");
-      } else {
-        setIsLoggedIn(false);
-        setUserEmail("");
-      }
-    };
-
-    checkAuth();
-
-    const handleStorage = () => {
-      checkAuth();
-    };
-
-    window.addEventListener("storage", handleStorage);
-    return () => {
-      window.removeEventListener("storage", handleStorage);
-    };
-  }, [path]);
+  const { isAuthenticated, user, logout } = useAuth();
 
   const handleLogout = async () => {
-    try {
-      await fetch("/api/auth/logout", {
-        method: "POST",
-        credentials: "include",
-      });
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("userEmail");
-      setIsLoggedIn(false);
-      setUserEmail("");
-      router.push("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    await logout();
+    router.push("/");
   };
 
   const { scrollY } = useScroll();
@@ -123,10 +87,10 @@ export default function Navbar() {
     </ul>
   );
 
-  const authButtonsDesktop = isLoggedIn ? (
+  const authButtonsDesktop = isAuthenticated ? (
     <div className="hidden md:flex items-center gap-3 pl-6 border-l border-white/10">
       <span className="text-sm text-text-primary truncate max-w-[180px]">
-        {userEmail}
+        {user?.email}
       </span>
       <button
         onClick={handleLogout}
@@ -152,10 +116,10 @@ export default function Navbar() {
     </div>
   );
 
-  const mobileAuthSection = isLoggedIn ? (
+  const mobileAuthSection = isAuthenticated ? (
     <div className="border-t border-white/10 pt-6 mt-4 px-6 text-center pb-8">
       <div className="flex flex-col gap-3">
-        <span className="text-sm text-text-primary break-words">{userEmail}</span>
+        <span className="text-sm text-text-primary break-words">{user?.email}</span>
         <button
           onClick={handleLogout}
           className="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition text-sm font-medium"
