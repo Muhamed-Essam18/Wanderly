@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  async redirects() {
+    return [
+      // Old URLs used /cities/<country>; keep existing links working.
+      { source: "/cities/:path*", destination: "/countries/:path*", permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       {

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "fetch-all-places": "npx ts-node --esm scripts/fetch-all-places.ts",
-    "check-registration": "npx ts-node --esm scripts/check-registration.ts"
+    "check-registration": "npx ts-node --esm scripts/check-registration.ts",
+    "enrich-places-metadata": "npx ts-node --esm scripts/enrich-places-metadata.ts"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",

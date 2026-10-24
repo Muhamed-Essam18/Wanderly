@@ -3,17 +3,17 @@ import SelectionsBar from "./SelectionsBar";
 import { CityCard } from "./CityCard/CityCard";
 import { motion } from "framer-motion";
 interface Props {
-  cityName: string;
+  locationName: string;
   data: any;
   placeType: string;
 }
-const City = ({ cityName, data, placeType }: Props) => {
+const City = ({ locationName, data, placeType }: Props) => {
   return (
     <>
       <section className=" md:pb-10  text-center w-[90%] m-auto pt-30">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
           <span className="text-sm text-primary font-medium">
-            About {cityName}
+            About {locationName}
           </span>
         </div>
         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-4">
@@ -58,7 +58,7 @@ const City = ({ cityName, data, placeType }: Props) => {
           })
         ) : (
           <div>
-            No {placeType} found in {cityName}
+            No {placeType} found in {locationName}
           </div>
         )}
       </section>

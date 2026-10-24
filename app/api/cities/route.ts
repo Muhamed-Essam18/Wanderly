@@ -1,116 +1,87 @@
-import { NextRequest, NextResponse } from "next/server";
-import modelTest from "../../models/testModel";
-import {connectDB} from "../../../lib/mongodb";
-import { placesTypes } from "@/Data/Data";
+import { NextRequest } from "next/server";
+
+type LatLng = { latitude: number; longitude: number };
+
+// Text search alone can return places far outside the intended city (ambiguous
+// names, loosely-matched text). Resolve the city's coordinates once and bias
+// every search toward them so the candidate pool stays local.
+const SEARCH_BIAS_RADIUS_METERS = 20000;
+const locationCenterCache = new Map<string, LatLng | null>();
+
+const resolveLocationCenter = async (locationName: string, apiKey: string): Promise<LatLng | null> => {
+  const cacheKey = locationName.toLowerCase();
+  if (locationCenterCache.has(cacheKey)) {
+    return locationCenterCache.get(cacheKey) ?? null;
+  }
+
+  try {
+    const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": apiKey,
+        "X-Goog-FieldMask": "places.location",
+      },
+      body: JSON.stringify({ textQuery: locationName }),
+    });
+
+    if (!res.ok) {
+      locationCenterCache.set(cacheKey, null);
+      return null;
+    }
+
+    const data = await res.json();
+    const location = data?.places?.[0]?.location;
+    const center =
+      typeof location?.latitude === "number" && typeof location?.longitude === "number"
+        ? { latitude: location.latitude, longitude: location.longitude }
+        : null;
+
+    locationCenterCache.set(cacheKey, center);
+    return center;
+  } catch {
+    locationCenterCache.set(cacheKey, null);
+    return null;
+  }
+};
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("query");
-  const placeType = searchParams.get("placeType");
-  const cityName = searchParams.get("cityName");
-
-  const tags = placesTypes.find((type) => type.name === placeType);
-  const tagSet = new Set(tags?.googleInputValue || []);
+  const locationName = searchParams.get("locationName") || searchParams.get("cityName");
 
   if (!query) {
-    return NextResponse.json({ error: "Missing query" }, { status: 400 });
+    return Response.json({ error: "Missing query" }, { status: 400 });
   }
 
-  await connectDB();
-  const existingData = await modelTest.findOne({ cashKey: query });
-  if (existingData) {
-    const data = existingData.output;
-    console.log("Data retrieved from MongoDB");
-    return NextResponse.json(data);
-  }
+  const apiKey = process.env.GOOGLE_MAPS_API_KEY!;
+  const hasLocationInQuery = locationName
+    ? query.toLowerCase().includes(locationName.toLowerCase())
+    : false;
+  const textQuery = locationName && !hasLocationInQuery ? `${query} in ${locationName}` : query;
 
-  if (!process.env.GOOGLE_MAPS_API_KEY) {
-    console.error("Missing GOOGLE_MAPS_API_KEY");
-    return NextResponse.json(
-      { error: "Missing GOOGLE_MAPS_API_KEY in environment" },
-      { status: 500 },
-    );
-  }
+  const locationCenter = locationName ? await resolveLocationCenter(locationName, apiKey) : null;
 
-  const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY,
-      "X-Goog-FieldMask":
-        "places.displayName,places.formattedAddress,places.rating,places.googleMapsUri,places.photos,places.types",
+  const res = await fetch(
+    "https://places.googleapis.com/v1/places:searchText",
+
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": apiKey,
+        "X-Goog-FieldMask":
+          "places.id,places.name,places.displayName,places.formattedAddress,places.rating,places.googleMapsUri,places.photos,places.location,places.currentOpeningHours,places.regularOpeningHours",
+      },
+      body: JSON.stringify({
+        textQuery,
+        ...(locationCenter
+          ? { locationBias: { circle: { center: locationCenter, radius: SEARCH_BIAS_RADIUS_METERS } } }
+          : {}),
+      }),
     },
-    body: JSON.stringify({
-      textQuery: query,
-    }),
-  });
-
-  if (!res.ok) {
-    const errorBody = await res.text();
-    console.error("Google Places API request failed:", res.status, errorBody);
-    return NextResponse.json(
-      { error: "Google Places API request failed", details: errorBody },
-      { status: 502 },
-    );
-  }
-
-  const data = await res.json();
-
-  const places = Array.isArray(data.places) ? data.places : [];
-
-  const shouldIncludePlace = (place: any) => {
-    if (!place.types) return false;
-    if (!tags || (tags.googleInputValue && tags.googleInputValue.length === 0)) {
-      return true;
-    }
-    return place.types.some((type: string) => tagSet.has(type));
-  };
-
-  const fetchCachedImage = async (photoName: string) => {
-    try {
-      const googleRes = await fetch(
-        `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=800`,
-        {
-          headers: {
-            "X-Goog-Api-Key": process.env.GOOGLE_MAPS_API_KEY!,
-          },
-        },
-      );
-
-      if (!googleRes.ok) {
-        console.error("Failed to fetch place image", googleRes.status);
-        return null;
-      }
-
-      const contentType = googleRes.headers.get("content-type") || "image/jpeg";
-      const buffer = Buffer.from(await googleRes.arrayBuffer());
-      const base64 = buffer.toString("base64");
-      return `data:${contentType};base64,${base64}`;
-    } catch (error) {
-      console.error("Cached image error", error);
-      return null;
-    }
-  };
-
-  const filteredPlaces = data.places.filter(shouldIncludePlace);
-  const cachedPlaces = await Promise.all(
-    filteredPlaces.map(async (place: any) => {
-      if (!place.photos?.[0]?.name) return place;
-      const cachedImage = await fetchCachedImage(place.photos[0].name);
-      return cachedImage ? { ...place, cachedImage } : place;
-    }),
   );
 
-  const finalData = { places: cachedPlaces };
-
-
-  console.log("Data retrieved from Google Places API");
-
-  await modelTest.create({
-    city: cityName,
-    placeType: placeType,
-    cashKey: query,
-    output: finalData,
-  });
-
-  return NextResponse.json(finalData);
+  const data = await res.json();
+  return Response.json(data);
 }

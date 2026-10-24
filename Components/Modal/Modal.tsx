@@ -1,13 +1,13 @@
 import { Country } from "@/Data/Data";
-import { Bed, Building, Landmark, MapPin, Utensils, X } from "lucide-react";
+import { Bed, Building, Compass, Landmark, MapPin, Sparkles, Utensils, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 interface CountryDetailsProps {
   country: Country;
   onClose: () => void;
 }
-const spaceLess = (city: string) => {
-  return city.replace(/\s+/g, "-");
+const toRouteSegment = (value: string) => {
+  return value.replace(/\s+/g, "-");
 };
 const Modal = ({ country, onClose }: CountryDetailsProps) => {
   return (
@@ -62,7 +62,7 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
 
           {/* Title */}
           <Link
-            href={`cities/${spaceLess(country.name)}/Places/Top-Landmarks`}
+            href={`/countries/${toRouteSegment(country.name)}/Places/Top-Landmarks`}
             className="absolute bottom-4 left-6 right-6 flex items-center gap-3 hover:scale-105 transition-all duration-300"
           >
             <span className="text-3xl">
@@ -82,12 +82,46 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
 
         {/* Content */}
         <div className="max-h-[calc(90vh-14rem)] overflow-y-auto p-6 space-y-6">
+          <div className="grid grid-cols-2 gap-3 -mt-2">
+            <Link
+              href={`/countries/${toRouteSegment(country.name)}/journey`}
+              className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 to-primary/5 p-4 transition-all duration-300 hover:from-primary/35 hover:to-primary/15"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_55%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative space-y-2">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
+                  <span className="text-sm font-semibold text-primary">Plan my journey</span>
+                </div>
+                <p className="text-xs leading-5 text-white/60">
+                  Open the guided trip builder and set your dates.
+                </p>
+              </div>
+            </Link>
+
+            <Link
+              href={`/countries/${toRouteSegment(country.name)}/Places/Top-Landmarks`}
+              className="group relative overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-white/10 to-white/5 p-4 transition-all duration-300 hover:from-white/15 hover:to-white/10"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.12),_transparent_55%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative space-y-2">
+                <div className="flex items-center gap-2">
+                  <Compass className="h-4 w-4 text-white/70 transition-transform group-hover:scale-110" />
+                  <span className="text-sm font-semibold text-white/80">I will customize it myself</span>
+                </div>
+                <p className="text-xs leading-5 text-white/55">
+                  Browse places manually and pick your own route.
+                </p>
+              </div>
+            </Link>
+          </div>
+
           <p className="text-white/70 leading-relaxed">{country.description}</p>
 
           {/* Costs */}
           <div className="grid grid-cols-2 gap-4">
             <Link
-              href={`cities/${spaceLess(country.name)}/Places/Resturants`}
+              href={`/countries/${toRouteSegment(country.name)}/Places/Resturants`}
               className="rounded-xl border border-text-muted/5 shadow-black/40 shadow-2xl bg-surface p-4 hover:bg-primary/60 transition-all duration-300 group"
             >
               <div className="mb-1 flex items-center gap-2 text-xs uppercase text-primary group-hover:text-text-primary ">
@@ -103,7 +137,7 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
             </Link>
 
             <Link
-              href={`cities/${spaceLess(country.name)}/Places/Hotels`}
+              href={`/countries/${toRouteSegment(country.name)}/Places/Hotels`}
               className="rounded-xl border border-text-muted/5 shadow-black/40 shadow-2xl bg-surface p-4 hover:bg-primary/60 transition-all duration-300 group"
             >
               <div className="mb-1 flex items-center gap-2 text-xs uppercase text-primary group-hover:text-text-primary">
@@ -129,7 +163,7 @@ const Modal = ({ country, onClose }: CountryDetailsProps) => {
               {country.cities.map((city) => (
                 <Link
                   key={city}
-                  href={`cities/${spaceLess(city)}/Places/Top-Landmarks`}
+                  href={`/countries/${toRouteSegment(country.name)}/Places/Top-Landmarks`}
                 >
                   <span
                     key={city}

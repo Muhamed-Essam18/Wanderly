@@ -20,10 +20,10 @@ const getBaseUrl = () => {
   );
 };
 
-export const getData = async function (query: string, cityName: string, placeType: string) {
+export const getData = async function (query: string, locationName: string, placeType: string) {
   const params = new URLSearchParams({
     query,
-    cityName,
+    locationName,
     placeType,
   });
   

@@ -361,7 +361,7 @@ export const countries: Country[] = [
   },
 
   {
-    id: "egypt",
+    id: "Egypt",
     name: "Egypt",
     flag: "eg",
     budgetLevel: "low",

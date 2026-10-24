@@ -12,8 +12,8 @@ import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import { placesTypes } from "@/Data/Data";
 const SelectionsBar = ({ length }: { length: string }) => {
-  const { cityName, placeType } = useParams<{
-    cityName: string;
+  const { countryName: countryRouteParam, placeType } = useParams<{
+    countryName: string;
     placeType: string;
   }>();
 
@@ -34,7 +34,7 @@ const SelectionsBar = ({ length }: { length: string }) => {
           </span>{" "}
           <Select
             onValueChange={(value) => {
-              router.push(`/cities/${cityName}/Places/${value}`);
+              router.push(`/countries/${countryRouteParam}/Places/${value}`);
             }}
             value={decodedPlaceType}
           >
